@@ -17,7 +17,7 @@ function App() {
   const Card = (props) => {
     return (
       <div className='card'>
-        <div className='switch'>
+        <div className='switch' onClick={handleSwitch}>
           <input type="checkbox" />
         </div>
         <div className='card-good'>
@@ -28,7 +28,7 @@ function App() {
           <img src={Img} alt="" />
           <input className='name' type="text" placeholder={props.named} />
         </div>
-        <button className='deleteCard'>+</button>
+        <button className='deleteCard' onClick={deleteCard}>+</button>
       </div>
     );
   }
@@ -51,6 +51,14 @@ function App() {
     console.log(cards);
   }
 
+  const deleteCard = (e) => {
+    // setCards([...cards].map((el, ind) => {
+    //       if(e.)
+    //     })
+    // );
+    console.log(e);
+  }
+
   const handleMouseOver = e => {
     let foo = document.querySelectorAll(".deleteCard");
 
@@ -66,6 +74,13 @@ function App() {
       foo[i].classList.remove("reavel");
     }
   };
+
+  const handleSwitch = e => {
+    console.log(e.currentTarget.id)
+  };
+
+
+
 
   return (
     <div className="App">

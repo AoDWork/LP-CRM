@@ -10,10 +10,17 @@
   color: black;
 }
 
-/*=== HEADER ====*/
+.table-container {
+  width: 480px;
+}
+
+
+
+/*==== HEADER ====*/
 .header {
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .header__item {
@@ -26,9 +33,11 @@
 
 .select {
   width: 100%;
+  height: 20px;
   border:none;
 }
 
+/*---- buttons ----*/
 .buttons {
   display: flex;
   flex-direction: column;
@@ -37,25 +46,22 @@
 }
 
 button {
-  text-align: center;
-  width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
   height: 15px;
 }
 
-
-/*=== CARD ====*/
-.card {
-  min-width: 450px;
-  max-height: 35px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+.addCardBtn, .deleteChosenCards {
+  font-size: 33px;
 }
 
-.card:hover {
-  background: lightgray;
+.deleteChosenCards p {
+  font-size: 39px;
+transform: rotate(45deg)
 }
+
 
 
 /*=== BODY ====*/
@@ -68,7 +74,27 @@ button {
   width: 15px;
 }
 
-/*=== CUSTOM CHECKBOX ====*/
+/*---- card ----*/
+.card {
+  max-height: 35px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+.deleteCard {
+  opacity: 0;
+  border: none;
+  font-size: 30px;
+  transform: rotate(45deg);
+}
+
+.card:hover {
+  background: lightgray;
+}
+
+/*---- custom checkbox ----*/
 .switch {
   width: 30px;
   height: 30px;
@@ -106,7 +132,6 @@ input:checked[type="checkbox"]:before {
   left: 15px;
 }
 
-
 img {
   width: 30px;
   height: 30px;
@@ -114,4 +139,12 @@ img {
 
 .named {
   attr:disabled;
+}
+
+
+
+/*=== Own styles ====*/
+
+.reavel {
+  opacity: 1;
 }

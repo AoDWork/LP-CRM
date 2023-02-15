@@ -1,0 +1,117 @@
+.App {
+  text-align: center;
+  background-color: rgb(245, 241, 241);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+/*=== HEADER ====*/
+.header {
+  display: flex;
+  gap: 5px;
+}
+
+.header__item {
+  min-width: 45px;
+}
+
+.header__item-4 {
+  min-width: 200px;
+}  
+
+.select {
+  width: 100%;
+  border:none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  text-align: center;
+  width: 10px;
+  height: 15px;
+}
+
+
+/*=== CARD ====*/
+.card {
+  min-width: 450px;
+  max-height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.card:hover {
+  background: lightgray;
+}
+
+
+/*=== BODY ====*/
+.switch, .card-good, .named {
+  display: flex;
+  align-items: center;
+}
+
+.id {
+  width: 15px;
+}
+
+/*=== CUSTOM CHECKBOX ====*/
+.switch {
+  width: 30px;
+  height: 30px;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  width: 30px;
+  height: 15px;
+  appearance: none;
+  outline: none;
+  background: gray;
+  border-radius: 20px;
+  transition: .5s;
+}
+
+input:checked[type="checkbox"] {
+  background: green;
+}
+
+input[type="checkbox"]:before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background: #fff;
+  top: 0;
+  left: 0;
+  transition: .5s;
+  transform: scale(1.1);
+}
+
+input:checked[type="checkbox"]:before {
+  left: 15px;
+}
+
+
+img {
+  width: 30px;
+  height: 30px;
+}
+
+.named {
+  attr:disabled;
+}

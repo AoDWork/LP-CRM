@@ -28,7 +28,7 @@ function App() {
           <img src={Img} alt="" />
           <input className='name' type="text" placeholder={props.named} />
         </div>
-        <button className='deleteCard' onClick={deleteCard}>+</button>
+        <button className='deleteCard' onClick={() => deleteCard(props.id)}>+</button>
       </div>
     );
   }
@@ -44,20 +44,19 @@ function App() {
   let renderList = cards.map((el, ind) => <ListElement key={ind} named={el.named} />)
 
   const addCard = () => {
-    setCards([
-      { disabled: false, id: "_", named: "____", img: Img },
+    setCards(cards => ([
+      { disabled: false, id: (cards.length + 1), named: "____", img: Img },
       ...cards
-    ]);
+    ]));
     console.log(cards);
   }
 
-  const deleteCard = (e) => {
-    // setCards([...cards].map((el, ind) => {
-    //       if(e.)
-    //     })
-    // );
-    console.log(e);
-  }
+  const deleteCard = (id) => {
+    console.log(id);
+    setCards((cards) =>
+      cards.filter((el) => el.id !== id)
+    );
+  };
 
   const handleMouseOver = e => {
     let foo = document.querySelectorAll(".deleteCard");

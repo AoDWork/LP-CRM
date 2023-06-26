@@ -10,15 +10,17 @@ function App() {
     { disabled: false, id: "2", named: "8GB", img: Img },
     { disabled: false, id: "3", named: "16GB", img: Img },
     { disabled: false, id: "4", named: "20", img: Img }
-  ]);
+  ])
+
+  const [selected, setSelect] = useState([])
 
   // let copied = Object.assign([], cards);
 
   const Card = (props) => {
     return (
-      <div className='card'>
-        <div className='switch' onClick={handleSwitch}>
-          <input type="checkbox" />
+      <div className='card' onClick={() => selectCard(props.id)}>
+        <div className='switch'>
+          <input type="checkbox" onClick={() => handleSwitch(props.id)} />
         </div>
         <div className='card-good'>
           xxxx-
@@ -28,7 +30,9 @@ function App() {
           <img src={Img} alt="" />
           <input className='name' type="text" placeholder={props.named} />
         </div>
-        <button className='deleteCard' onClick={() => deleteCard(props.id)}>+</button>
+        <span data-hint="Удалить">
+          <button className='deleteCard' onClick={() => deleteCard(props.id)}>+</button>
+        </span>
       </div>
     );
   }
@@ -43,47 +47,55 @@ function App() {
 
   let renderList = cards.map((el, ind) => <ListElement key={ind} named={el.named} />)
 
+
   const addCard = () => {
     setCards(cards => ([
       { disabled: false, id: (cards.length + 1), named: "____", img: Img },
       ...cards
-    ]));
-    console.log(cards);
+    ]))
   }
 
   const deleteCard = (id) => {
-    console.log(id);
     setCards((cards) =>
       cards.filter((el) => el.id !== id)
-    );
-  };
+    )
+  }
+
+  const selectCard = (id) => {
+    if (!selected.includes(id)) {
+      setSelect(selected.concat(id))
+    }
+    console.log(selected)
+  }
 
   const handleMouseOver = e => {
-    let foo = document.querySelectorAll(".deleteCard");
+    let foo = document.querySelectorAll(".deleteCard")
 
     for (var i = 0; i < foo.length; i++) {
-      foo[i].classList.add("reavel");
+      foo[i].classList.add("reavel")
     }
-  };
+  }
 
-  const handleMouseLeft = e => {
-    let foo = document.querySelectorAll(".deleteCard");
+  const handleMouseLeave = e => {
+    let foo = document.querySelectorAll(".deleteCard")
 
     for (var i = 0; i < foo.length; i++) {
-      foo[i].classList.remove("reavel");
+      foo[i].classList.remove("reavel")
     }
-  };
+  }
 
-  const handleSwitch = e => {
-    console.log(e.currentTarget.id)
-  };
-
-
+  const handleSwitch = id => {
+    console.log( [...cards].forEach(el => { if(el.id === id)el.disabled = !el.disabled}) )  
+    console.log(cards)  
+    // setCards(cards => ( 
+    //   [cards.map(el => { if(el.id === id){console.log(el.disabled = !el.disabled)} }) ]
+    // ))
+  }
 
 
   return (
     <div className="App">
-      <div className='table-container' onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeft}>
+      <div className='table-container' onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
         <div className='header'>
           <div className='header__item'>Статус
             <select className="select" name="status" id=""></select>
@@ -110,7 +122,7 @@ function App() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

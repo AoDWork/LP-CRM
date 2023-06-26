@@ -529,9 +529,35 @@ img {
 }
 
 
-
 /*=== Own styles ====*/
 
 .reavel {
   opacity: 1;
+}
+
+
+/*---- Tooltip ----*/
+*[data-hint] {
+	position: relative;
+}
+*[data-hint]:hover:after {
+	visibility: visible;
+	transform: translate(50%, 0);
+}
+*[data-hint]:after {
+	visibility: hidden;
+	position: absolute;
+	transition: transform .2s ease;
+	top: -3px;
+	left: 50%;
+	z-index: 2;
+	transform: translate(-50%, 0%);
+	background-color: var(--color-blue-gray-700);
+	color: rgb(0, 0, 0);
+	content: attr(data-hint);
+	display: inline-block;
+	padding: 3px;
+	border-radius: 3px;
+	font-size:1em;
+	line-height: 1em;
 }
